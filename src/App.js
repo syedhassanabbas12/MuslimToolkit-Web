@@ -1,25 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import Layout from "./components/Layout";
+import RouteList from "./routes";
+import ErrorPage from "./components/ErrorPage/ErrorPage";
+import Loader from "./components/Loader";
+import { isAuthenticated } from "./helpers/AuthHelper";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => {
+  const isLoggedIn = isAuthenticated();
+  let filteredRoutes = RouteList;
+
+  if (!isLoggedIn) {
+    filteredRoutes = RouteList.filter((route) => route.isAuthRequired !== true);
+  }
+
+  const router = createBrowserRouter([
+    {
+      element: <Layout />,
+      loader: () => <Loader isLoading={true} />,
+      children: filteredRoutes,
+      errorElement: <ErrorPage />,
+    },
+  ]);
+  return <RouterProvider router={router} />;
+};
 
 export default App;
