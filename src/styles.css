@@ -1,7 +1,7 @@
 /* src/styles.css */
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
 
 /* @layer base {
     :root {
@@ -17,6 +17,29 @@
         --color-neutral-900: theme('colors.gray.900');
     }
 } */
+
+[data-theme="mytheme"] .chapter-card:hover .chapter-id-box {
+  color: #0a8270;
+  background-color: white;
+}
+
+[data-theme="dark"] .chapter-card:hover .chapter-id-box {
+  color: #0a8270;
+  background-color: white;
+  border: none;
+}
+
+[data-theme="dark"] .chapter-card .chapter-id-box {
+  color: white;
+  background-color: #2C3D3B;
+  border: none;
+}
+
+[data-theme="dark"] .chapter-card {
+    border: none;
+  background-color: #1e2d2b;
+  color: white;
+}
 
 /* .theme-green {
     --color-primary-50: theme('colors.green.50');
