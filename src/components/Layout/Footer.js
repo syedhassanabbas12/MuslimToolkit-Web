@@ -7,9 +7,9 @@ const Footer = () => {
       <aside>
         {SVGS.HashLogo}
         <p>
-          ACME Industries Ltd.
+          Muslim Toolkit Ltd.
           <br />
-          Providing reliable tech since 1992
+          Providing reliable tech solutions since 2019
         </p>
       </aside>
       <nav>

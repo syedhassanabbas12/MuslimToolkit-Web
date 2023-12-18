@@ -21,20 +21,30 @@ const QuramHome = () => {
   const renderItem = (item) => {
     return (
       <List.Item>
-        <Card className="shadow-xl cursor-pointer" title={item.title}>
+        <Card
+          className="cursor-pointer hover:border-none bg-primary hover:bg-accent hover:text-white chapter-card"
+          title={item.title}
+        >
           <Row className="ju justify-between">
             <Row>
-              <Col className="rounded border h-6 w-6 text-center mr-2 self-center bg-[#E3EADE]">
+              <Col className="rounded border h-6 w-6 text-center mr-2 self-center bg-secondary chapter-id-box">
                 {item?.id}
               </Col>
               <Col>
-                <Row>{item?.name_simple}</Row>
-                <Row className="w-3/5 text-ellipsis whitespace-nowrap">{TextEllipsis(item?.translated_name?.name)}</Row>
+                <Row className="text-base font-notmal">{item?.name_simple}</Row>
+                <Row className="w-3/5 text-ellipsis whitespace-nowrap text-xs">
+                  <div
+                    className="lg:tooltip"
+                    data-tip={item?.translated_name?.name}
+                  >
+                    {TextEllipsis(item?.translated_name?.name)}
+                  </div>
+                </Row>
               </Col>
             </Row>
             <Col style={{ alignContent: "flex-end", alignSelf: "flex-end" }}>
-              <Row>{item?.name_arabic}</Row>
-              <Row>{item?.verses_count} Verses</Row>
+              <Row className="text-base font-notmal">{item?.name_arabic}</Row>
+              <Row className="text-xs">{item?.verses_count} Verses</Row>
             </Col>
           </Row>
         </Card>
@@ -44,11 +54,10 @@ const QuramHome = () => {
 
   return (
     <div>
-      <Divider orientation="left"></Divider>
       <List
         grid={{ gutter: 16, xl: 4, xxl: 4, lg: 4, md: 3, sm: 2, xs: 1 }}
-        header={<div>isLoading</div>}
-        footer={<div>Footer</div>}
+        // header={<div>isLoading</div>}
+        // footer={<div>Footer</div>}
         dataSource={listOfChapters}
         renderItem={renderItem}
       />

@@ -6,10 +6,11 @@ module.exports = {
   daisyui: {
     themes: [
       {
-        mytheme: {
-          // primary: "#8200ff",
-          // secondary: "#00c6ff",
-          // accent: "#00ec00",
+        light: {
+          ...require("daisyui/src/theming/themes")["light"],
+          primary: "#FFFAEC",
+          secondary: "#E3EADE",
+          accent: "#0A8270",
           // neutral: "#090909",
           // "base-100": "#efffff",
           // info: "#00feff",
@@ -19,7 +20,10 @@ module.exports = {
         },
         dark: {
           ...require("daisyui/src/theming/themes")["dark"],
-          // primary: "#8200ff",
+          primary: "#0A1614",
+          accent: "",
+          secondary: "",
+          // : "#FFBC00"
         },
       },
       // "light",
