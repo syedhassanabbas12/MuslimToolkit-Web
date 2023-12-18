@@ -5,33 +5,41 @@ module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}", "./src/*.{js,jsx,ts,tsx}"],
   daisyui: {
     themes: [
-      "light",
-      "dark",
-      "cupcake",
-      "retro",
       {
         mytheme: {
-          primary: "#8200ff",
-          secondary: "#00c6ff",
-          accent: "#00ec00",
-          neutral: "#090909",
-          "base-100": "#efffff",
-          info: "#00feff",
-          success: "#6ab800",
-          warning: "#bf5500",
-          error: "#ff3e70",
+          // primary: "#8200ff",
+          // secondary: "#00c6ff",
+          // accent: "#00ec00",
+          // neutral: "#090909",
+          // "base-100": "#efffff",
+          // info: "#00feff",
+          // success: "#6ab800",
+          // warning: "#bf5500",
+          // error: "#ff3e70",
+        },
+        dark: {
+          ...require("daisyui/src/theming/themes")["dark"],
+          // primary: "#8200ff",
         },
       },
+      // "light",
+      // "dark",
+      // "cupcake",
+      // "retro",
     ],
   },
   theme: {
     extend: {
-      colors: {
-        primary: "#0A0A0A",
-        secondary: "#242424",
-        tertiary: "#B9C4FF",
-        white: "#FFFFFF",
-      },
+      // colors: {
+      //   secondary: "#26534C",
+      //   accent: "#F2AC0D",
+      //   white: "#FFFFFF",
+      //   onNeutralBg: "var(--onNeutralBg)",
+      //   neutralBg: "var(--neutralBg)",
+      //   onPrimaryBg: "var(--onPrimaryBg)",
+      //   primaryBg: "var(--primaryBg)",
+      //   primary: "var(--primary)",
+      // },
       fontFamily: {
         sans: ["Inter var", ...defaultTheme.fontFamily.sans],
         poppins: ["Poppins var", "sans-serif"],
@@ -47,5 +55,5 @@ module.exports = {
       xl: "1700px",
     },
   },
-  plugins: [require("daisyui")],
+  plugins: [require("daisyui"), require("@tailwindcss/typography")],
 };

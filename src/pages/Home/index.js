@@ -1,20 +1,13 @@
 import React from "react";
-import { useSelector, useDispatch } from "react-redux";
 import Quran from "../../assets/images/quran.jpg";
-import { getListData } from "../../store/actions/genericActions";
-import { getChaptersList } from "../../store/actions/QuranActions";
-import { QURAN_API } from "../../constants/UrlConstants";
-
-const KEY = "CHAPTERS";
-const URL = QURAN_API.LIST_CHAPTERS;
+import { useNavigate } from "react-router-dom/dist";
+import { PATHS } from "../../constants/PathConstants";
 
 const Home = () => {
-  const dispatch = useDispatch();
-  const stateQuran = useSelector((state) => state?.quran);
-  const { [KEY]: listOfChapters = [] } = stateQuran;
-console.log("wow->", stateQuran)
+  const navigate = useNavigate();
+
   const onClick = () => {
-    dispatch(getChaptersList(KEY, URL));
+    navigate(PATHS.QURAN);
   };
   return (
     <>
@@ -28,7 +21,7 @@ console.log("wow->", stateQuran)
           <div>
             <h1 className="text-5xl font-bold">Holy Quran!</h1>
             <p className="py-6">
-              Read, study, and learn The Noble Quran. Quran.com is a Sadaqah
+              Read, study, and learn The Noble Quran. MuslimToolkit is a Sadaqah
               Jariyah. We hope to make it easy for everyone to read, study, and
               learn The Noble Quran.
             </p>
@@ -36,13 +29,6 @@ console.log("wow->", stateQuran)
               Start Reading
             </button>
           </div>
-        </div>
-        <div>
-          {listOfChapters.map(chapter => {
-            return <div>
-              {chapter?.name_arabic}
-            </div>
-          })}
         </div>
       </div>
     </>

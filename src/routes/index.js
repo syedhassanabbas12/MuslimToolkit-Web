@@ -1,8 +1,9 @@
 import React from "react";
 import { PATHS } from "../constants/PathConstants";
 
-const Home = React.lazy(() => import("../components/Home"));
+const Home = React.lazy(() => import("../pages/Home"));
 const AboutUs = React.lazy(() => import("../components/AboutUs"));
+const QuranHome = React.lazy(() => import("../pages/QuranHome"));
 
 const RouteList = [
   {
@@ -13,8 +14,14 @@ const RouteList = [
   },
   {
     path: PATHS.ABOUT_US,
-    basename: "/",
+    basename: "/about-us",
     element: <AboutUs />,
+    isAuthRequired: false,
+  },
+  {
+    path: PATHS.QURAN,
+    basename: "/quran",
+    element: <QuranHome />,
     isAuthRequired: false,
   },
 ];

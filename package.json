@@ -9,6 +9,7 @@
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "antd": "^5.12.2",
     "autoprefixer": "^10.4.16",
     "axios": "^1.6.2",
     "firebase": "^10.7.1",
@@ -51,6 +52,8 @@
     ]
   },
   "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "@tailwindcss/typography": "^0.5.10",
     "daisyui": "^4.4.20",
     "redux-devtools-extension": "^2.13.9"
   }

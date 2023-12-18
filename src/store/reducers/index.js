@@ -1,5 +1,5 @@
 import { combineReducers } from "redux";
-import general from "./genericReducer";
+import general from "./generalReducer";
 import quran from "./QuranReducer";
 
 const rootReducer = combineReducers({
