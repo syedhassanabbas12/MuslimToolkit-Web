@@ -1,6 +1,4 @@
-import React from "react";
-import RouteList from "../../routes";
-import { Link } from "react-router-dom";
+import React, { useEffect } from "react";
 
 const SideButton = () => (
   <div className="flex-none">
@@ -120,10 +118,13 @@ const SearchIcon = () => {
   );
 };
 
-const ThemeChanger = () => (
+const ThemeChanger = ({ toggleTheme }) => (
   <label className="swap swap-rotate">
     {/* this hidden checkbox controls the state */}
-    <input type="checkbox" className="theme-controller" value="dark" />
+    <input
+      onClick={() => toggleTheme()}
+      type="checkbox" /* className="theme-controller" value="dark"  */
+    />
 
     {/* sun icon */}
     <svg
@@ -146,13 +147,25 @@ const ThemeChanger = () => (
 );
 
 const Header = () => {
+  const [theme, setTheme] = React.useState("mytheme");
+
+  const toggleTheme = () => {
+    console.log("wow->toggleTheme", theme);
+    setTheme(theme === "dark" ? "mytheme" : "dark");
+  };
+
+  useEffect(() => {
+    console.log("wow->theme", theme);
+    document.querySelector("html").setAttribute("data-theme", theme);
+  }, [theme]);
+
   return (
     <>
-      <div className="navbar">
+      <div className="navbar bg-primary">
         <SideButton />
         <Logo />
         <div className="flex-none gap-2">
-          <ThemeChanger />
+          <ThemeChanger toggleTheme={toggleTheme} />
           <SearchIcon />
           <SearchBar />
           <UserMenu />
