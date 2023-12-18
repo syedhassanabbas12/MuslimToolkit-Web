@@ -1,44 +1,51 @@
 import React from "react";
+import { useSelector, useDispatch } from "react-redux";
+import Quran from "../../assets/images/quran.jpg";
+import { getListData } from "../../store/actions/genericActions";
+import { getChaptersList } from "../../store/actions/QuranActions";
+import { QURAN_API } from "../../constants/UrlConstants";
+
+const KEY = "CHAPTERS";
+const URL = QURAN_API.LIST_CHAPTERS;
 
 const Home = () => {
+  const dispatch = useDispatch();
+  const stateQuran = useSelector((state) => state?.quran);
+  const { [KEY]: listOfChapters = [] } = stateQuran;
+console.log("wow->", stateQuran)
+  const onClick = () => {
+    dispatch(getChaptersList(KEY, URL));
+  };
   return (
-    // <div
-    //   className="hero min-h-screen"
-    //   style={{
-    //     backgroundImage:
-    //       "url(https://daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.jpg)",
-    //   }}
-    // >
-    //   <div className="hero-overlay bg-opacity-60"></div>
-    //   <div className="hero-content text-center text-neutral-content">
-    //     <div className="max-w-md">
-    //       <h1 className="mb-5 text-5xl font-bold">Hello there</h1>
-    //       <p className="mb-5">
-    //         Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-    //         excepturi exercitationem quasi. In deleniti eaque aut repudiandae et
-    //         a id nisi.
-    //       </p>
-    //       <button className="btn btn-primary">Start Reading</button>
-    //     </div>
-    //   </div>
-    // </div>
-    <div className="hero min-h-screen bg-base-200">
-      <div className="hero-content -z-0 flex-col lg:flex-row">
-        <img
-          src="https://daisyui.com/images/stock/photo-1635805737707-575885ab0820.jpg"
-          className="max-w-sm rounded-lg shadow-2xl"
-        />
+    <>
+      <div className="hero min-h-screen ">
+        <div className="hero-content -z-0 flex-col lg:flex-row">
+          <img
+            alt="Quran"
+            src={Quran}
+            className="max-w-sm rounded-lg shadow-2xl"
+          />
+          <div>
+            <h1 className="text-5xl font-bold">Holy Quran!</h1>
+            <p className="py-6">
+              Read, study, and learn The Noble Quran. Quran.com is a Sadaqah
+              Jariyah. We hope to make it easy for everyone to read, study, and
+              learn The Noble Quran.
+            </p>
+            <button onClick={onClick} className="btn bg-primary text-white">
+              Start Reading
+            </button>
+          </div>
+        </div>
         <div>
-          <h1 className="text-5xl font-bold">Holy Quran!</h1>
-          <p className="py-6">
-            Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-            excepturi exercitationem quasi. In deleniti eaque aut repudiandae et
-            a id nisi.
-          </p>
-          <button className="btn bg-primary text-white">Start Reading</button>
+          {listOfChapters.map(chapter => {
+            return <div>
+              {chapter?.name_arabic}
+            </div>
+          })}
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

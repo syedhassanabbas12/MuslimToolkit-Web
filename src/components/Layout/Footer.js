@@ -3,7 +3,7 @@ import { SVGS } from "../../assets/svgs";
 
 const Footer = () => {
   return (
-    <footer className="footer p-10 bg-neutral text-neutral-content">
+    <footer className="footer p-10 text-primary text-neutral-content">
       <aside>
         {SVGS.HashLogo}
         <p>

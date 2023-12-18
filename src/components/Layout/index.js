@@ -10,11 +10,13 @@ export default function Layout() {
     <>
       {<Loader isLoading={isLoading} />}
       <Header />
-      <main>
-        <Suspense fallback={<Loader isLoading={true} />}>
-          <Outlet />
-        </Suspense>
-      </main>
+      <div className="bg-gradient-to-b from-tertiary">
+        <main>
+          <Suspense fallback={<Loader isLoading={true} />}>
+            <div className="container mx-auto"><Outlet /></div>
+          </Suspense>
+        </main>
+      </div>
       <Footer />
     </>
   );
